@@ -276,6 +276,7 @@ namespace QuantConnect.Lean.Engine.DataFeeds
             if (subscription.RemovedFromUniverse.Value
                 && _subscriptionManagerSubscriptions.TryRemove(subscription.Configuration, out config))
             {
+                Log.Trace($"{config.Symbol} was removed on {_timeKeeper.UtcTime}");
                 if (HasCustomData && config.IsCustomData)
                 {
                     HasCustomData = _subscriptionManagerSubscriptions.Any(x => x.Key.IsCustomData);

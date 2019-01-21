@@ -1175,9 +1175,19 @@ namespace QuantConnect.Lean.Engine
                 var configs = algorithm.SubscriptionManager.SubscriptionDataConfigService
                     .GetSubscriptionDataConfigs(security.Symbol);
 
-                var latestMarketOnCloseTimeRoundedDownByResolution = nextMarketClose.Subtract(MarketOnCloseOrder.DefaultSubmissionTimeBuffer)
-                    .RoundDownInTimeZone(configs.GetHighestResolution().ToTimeSpan(), security.Exchange.TimeZone, configs.First().DataTimeZone);
+                var latestMarketOnCloseTimeRoundedDownByResolution = DateTime.MinValue;
 
+                try
+                {
+                    latestMarketOnCloseTimeRoundedDownByResolution = nextMarketClose.Subtract(MarketOnCloseOrder.DefaultSubmissionTimeBuffer)
+                    .RoundDownInTimeZone(configs.GetHighestResolution().ToTimeSpan(), security.Exchange.TimeZone, configs.First().DataTimeZone);
+                }
+                catch (Exception e)
+                {
+
+                    throw new Exception($"Configs.Count {configs.Count}. Symbol: {security.Symbol} :: {e}");
+                }
+                
                 // we don't need to do anyhing until the market closes
                 if (security.LocalTime < latestMarketOnCloseTimeRoundedDownByResolution) continue;
 

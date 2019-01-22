@@ -318,6 +318,10 @@ namespace QuantConnect.Lean.Engine
                         {
                             security.IsTradable = false;
                         }
+                        if (splitWarnings.RemoveAll(x => x.Symbol == security.Symbol) > 0)
+                        {
+                            Log.Trace($"AlgorithmManager.Run(): Removed security split warnings for {security.Symbol}");
+                        }
                     }
                 }
 

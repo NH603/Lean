@@ -124,10 +124,13 @@
     <Compile Include="AddRemoveSecurityRegressionAlgorithm.cs" />
     <Compile Include="Alphas\ForexCalendarAlpha.cs" />
     <Compile Include="Alphas\RebalancingLeveragedETFAlpha.cs" />
+    <Compile Include="BasicSetAccountCurrencyRegressionAlgorithm.cs" />
     <Compile Include="HistoryWithSymbolChangesRegressionAlgorithm.cs" />
     <Compile Include="FeeModelNotUsingAccountCurrency.cs" />
     <Compile Include="MaximumPortfolioDrawdownFrameworkAlgorithm.cs" />
     <Compile Include="CompositeRiskManagementModelFrameworkAlgorithm.cs" />
+    <Compile Include="SetAccountCurrencyCashBuyingPowerModelRegressionAlgorithm.cs" />
+    <Compile Include="SetAccountCurrencySecurityMarginModelRegressionAlgorithm.cs" />
     <Compile Include="SetCashOnDataRegressionAlgorithm.cs" />
     <Compile Include="StartingCapitalRegressionAlgorithm.cs" />
     <Compile Include="TrailingStopRiskFrameworkAlgorithm.cs" />
